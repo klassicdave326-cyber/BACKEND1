@@ -1,6 +1,6 @@
 
 import { userModel } from "../models/userModel.js"
-import { signupValidate, loginValidate } from "../vaildator/userValidator.js"
+import { signupValidate, loginValidate } from "../validator/userValidator.js"
 import { genarateToken } from "../utils/generateToken.js"
 import bcrypt from "bcryptjs"
 export const getHome = (req,res) => {
