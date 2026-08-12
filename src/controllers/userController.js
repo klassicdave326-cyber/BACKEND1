@@ -2,6 +2,7 @@
 import { userModel } from "../models/userModel.js"
 import { signupValidate, loginValidate } from "../vaildator/userValidator.js"
 import { genarateToken } from "../utils/generateToken.js"
+import bcrypt from "bcryptjs"
 export const getHome = (req,res) => {
     res.send("Hompage!")
 }
@@ -71,17 +72,17 @@ export const loginUser = async (req,res) => {
                 message: error.details[0].message
             })
         }
-        const existingUser = await userModel.findOne((email))
+        const existingUser = await userModel.findOne({email})
         if(!existingUser) {
             return res.status(401).json({
                 message: `User with ${email} does not exist. Signup instead.`
             })
         }
 
-        const isPaaswordValid = await bcrypt.compare(password,existingUser.password)
+        const isPasswordValid = await bcrypt.compare(password,existingUser.password)
         
-        if(!ispasswordValid) {
-            return res.staus(401).json({
+        if(!isPasswordValid) {
+            return res.status(401).json({
                 message: "Invalid credentials. Try again."
             })
         }
