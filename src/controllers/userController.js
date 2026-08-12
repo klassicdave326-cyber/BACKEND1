@@ -1,6 +1,6 @@
 
 import { userModel } from "../models/userModel.js"
-import { signupValidate } from "../vaildator/userValidator.js"
+import { signupValidate, loginValidate } from "../vaildator/userValidator.js"
 import { genarateToken } from "../utils/generateToken.js"
 export const getHome = (req,res) => {
     res.send("Hompage!")

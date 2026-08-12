@@ -6,3 +6,8 @@ export const signupValidate = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().required().min(8).max(16)
 })
+
+export const loginValidate = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required().min(8).max(16)
+})
